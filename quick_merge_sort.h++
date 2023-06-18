@@ -1,6 +1,9 @@
 /*
  * Copyright (c) 2020 Morwenn
  * SPDX-License-Identifier: BSL-1.0
+
+ * Copyright (c) 2023 pysoft group
+ * SPDX-License-Identifier: BSL-1.0
  */
 #ifndef MORWENN_QUICK_MERGE_SORT_H_
 #define MORWENN_QUICK_MERGE_SORT_H_
@@ -12,6 +15,8 @@
 #include <limits>
 #include <type_traits>
 #include <utility>
+
+namespace qmsort{
 
 // Returns floor(log2(n)), assumes n > 0
 
@@ -478,4 +483,18 @@ auto quick_merge_sort(BidirectionalIterator first, BidirectionalIterator last,
     insertion_sort_n(first, size, std::move(comp));
 }
 
+template<typename BidirectionalIterator, typename Compare>
+auto quick_merge_sort(BidirectionalIterator first, BidirectionalIterator last, Compare comp)
+    -> void
+{
+    quick_merge_sort(first, last, std::distance(first, last), comp);
+}
+
+template<typename BidirectionalIterator, typename Compare>
+auto quick_merge_sort(BidirectionalIterator first, BidirectionalIterator last)
+    -> void
+{
+    quick_merge_sort(first, last, std::distance(first, last), std::less<std::iterator_traits<BidirectionalIterator>::value_type>());
+}
+}
 #endif // MORWENN_QUICK_MERGE_SORT_H_
