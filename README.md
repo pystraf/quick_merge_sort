@@ -9,8 +9,8 @@ Unstable comparison sort for bidirectional iterators in O(n log n) time &amp; O(
 
 int main(){
     vector<int> a{5,6,3,2,3,54,234,5,52,5,52512};
-    quick_merge_sort(a.begin(), a.end());
-    for(auto p:a) cout<<p<<" ";
+    qmsort::quick_merge_sort(a.begin(), a.end());
+    for(auto p: a) cout<<p<<" ";
     return 0;
 }
 ```
