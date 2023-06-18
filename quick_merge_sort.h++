@@ -309,8 +309,8 @@ auto nth_element(BidirectionalIterator first, BidirectionalIterator last,
 
 template<typename RandomAccessIterator, typename Compare>
 auto nth_element(RandomAccessIterator first, RandomAccessIterator last,
-                 typename std::iterator_traits<RandomAccessIterator>::iterator_category nth_pos,
-                 typename std::iterator_traits<RandomAccessIterator>::iterator_category size,
+                 typename std::iterator_traits<BidirectionalIterator>::difference_type nth_pos,
+                 typename std::iterator_traits<BidirectionalIterator>::difference_type size,
                  Compare comp,
                  std::random_access_iterator_tag)
     -> RandomAccessIterator
